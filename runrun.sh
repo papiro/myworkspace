@@ -21,8 +21,10 @@ if ! exists vim; then
   sudo apt-get install -y vim
 fi
 
-cp ./.vimrc ~/
 nvm install stable
-git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 
+cp ./.vimrc ~/
+git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 vim +PluginInstall +qall
+
+git config --global core.editor "vim"
