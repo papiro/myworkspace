@@ -27,6 +27,6 @@ sudo npm install -g npm &
 
 cp ./.vimrc ~/ &
 sudo git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-vim +PluginInstall +qall &
+sudo vim +PluginInstall +qall &
 
 git config --global core.editor "vim"
