@@ -2,8 +2,10 @@ exists(){
   command -v $1 2>&1 >/dev/null && return 0 || return 1
 }
 
-sudo apt-get update -y
-sudo apt-get upgrade -y
+if ! exists c9; then
+   sudo apt-get update -y
+   sudo apt-get upgrade -y
+fi
 
 if ! exists git; then
   sudo apt-get install -y git
