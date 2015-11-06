@@ -30,3 +30,5 @@ sudo git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.
 sudo vim +PluginInstall +qall &
 
 git config --global core.editor "vim"
+
+cat .profile >> ~/.profile
