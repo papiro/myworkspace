@@ -11,8 +11,8 @@ Plugin 'colorsupport.vim'
 call vundle#end()
 filetype plugin indent on
 
-" highlight Cursor ctermfg=red ctermbg=green
-" highlight Normal ctermbg=white ctermfg=black
+" hi Cursor ctermfg=red ctermbg=green
+" hi Normal ctermbg=black ctermfg=green
 colorscheme frozen
 syntax enable
 
@@ -21,4 +21,7 @@ set tabstop=3
 set shiftwidth=3
 set expandtab
 
+" (-: KEY MAPPINGS :-)
 nnoremap <space> i<space><esc>
+nnoremap <Left> :bprev<CR>
+nnoremap <Right> :bnext<CR>
