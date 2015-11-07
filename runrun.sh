@@ -25,13 +25,13 @@ fi
 
 nvm install stable &
 
-sudo npm install -g npm &
-
 cp ./.vimrc ~/ &
-cp --parents ./colors/*.vim ~/.vim/colors &
+sudo cp --parents colors/*.vim ~/.vim
 sudo git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 sudo vim +PluginInstall +qall &
 
 git config --global core.editor "vim"
 
 cat .profile >> ~/.profile
+
+sudo npm install -g npm
