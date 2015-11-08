@@ -20,6 +20,7 @@ hi function ctermfg=darkgrey
 hi javaScriptParens ctermfg=darkgrey
 hi javaScriptValue ctermfg=darkcyan
 hi String ctermfg=cyan
+hi templateString ctermfg=cyan
 hi PreProc ctermfg=white
 hi Constant ctermfg=white
 hi Type ctermfg=white

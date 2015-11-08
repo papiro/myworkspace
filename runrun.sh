@@ -26,6 +26,8 @@ fi
 nvm install stable &
 
 cp ./.vimrc ~/ &
+sudo mkdir -p ~/.vim/after/syntax
+sudo cp syntax/*.vim ~/.vim/after/syntax
 sudo cp --parents colors/*.vim ~/.vim
 sudo git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 sudo vim +PluginInstall +qall &
