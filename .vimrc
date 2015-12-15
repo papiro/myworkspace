@@ -32,8 +32,11 @@ hi Error ctermbg=red
 syntax enable
 
 set expandtab
+let g:netrw_liststyle=3
 
 " (-: KEY MAPPINGS :-)
+nnoremap <S-Enter> O<Esc>
+nnoremap <CR> o<Esc>
 nnoremap <space> i<space><esc>
 nnoremap <Left> :bprev<CR>
 nnoremap <Right> :bnext<CR>
