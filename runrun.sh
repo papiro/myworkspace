@@ -15,6 +15,10 @@ if ! exists node; then
   sudo apt-get install -y nodejs-legacy
 fi
 
+if ! exists curl; then
+  sudo apt-get install -y curl
+fi
+
 if ! exists nvm; then
   curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.29.0/install.sh | bash
 fi
@@ -35,5 +39,3 @@ sudo vim +PluginInstall +qall &
 git config --global core.editor "vim"
 
 cat .profile >> ~/.profile
-
-sudo npm install -g npm
