@@ -2,31 +2,30 @@ exists(){
   command -v $1 2>&1 >/dev/null && return 0 || return 1
 }
 
-if ! exists c9; then
-   sudo apt-get update -y
-   sudo apt-get upgrade -y
-fi
+sudo apt-get update -y
+sudo apt-get upgrade -y
 
-if ! exists git; then
-  sudo apt-get install -y git
-fi
-
+echo "Installing NodeJS..."
 if ! exists node; then
   sudo apt-get install -y nodejs-legacy
 fi
 
+echo "Installing curl..."
 if ! exists curl; then
   sudo apt-get install -y curl
 fi
 
+echo "Installing nvm..."
 if ! exists nvm; then
   curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.29.0/install.sh | bash
 fi
 
+echo "Installing vim..."
 if ! exists vim; then
   sudo apt-get install -y vim
 fi
 
+echo "Installing latest nodejs stable..."
 nvm install stable &
 
 cp ./.vimrc ~/ &
@@ -38,4 +37,7 @@ sudo vim +PluginInstall +qall &
 
 git config --global core.editor "vim"
 
-cat .profile >> ~/.profile
+cat .bashrc >> ~/.bashrc
+
+git config --global user.email "pierre.pirault@outlook.com"
+git config --global user.name "papiro"
