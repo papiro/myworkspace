@@ -20,6 +20,11 @@ if ! exists nvm; then
   curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.29.0/install.sh | bash
 fi
 
+echo "Installing npm..."
+if ! exists npm; then
+  sudo apt-get install npm
+fi
+
 echo "Installing vim..."
 if ! exists vim; then
   sudo apt-get install -y vim
