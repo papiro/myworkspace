@@ -9,7 +9,6 @@ Plugin 'editorconfig/editorconfig-vim'
 Plugin 'colorsupport.vim'
 
 call vundle#end()
-filetype plugin indent on
 
 hi Cursor ctermfg=red ctermbg=green
 hi Normal ctermbg=black ctermfg=white
@@ -28,10 +27,14 @@ hi Special ctermfg=white
 hi Underlined ctermfg=white
 hi Error ctermbg=red
 
+filetype plugin indent on
+set expandtab
+set tabstop=2
+set shiftwidth=2
+
 " colorscheme frozen
 syntax enable
 
-set expandtab
 let g:netrw_liststyle=3
 
 " (-: KEY MAPPINGS :-)
