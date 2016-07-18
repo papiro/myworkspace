@@ -12,4 +12,21 @@ PS1="$GREEN\u@\h$NO_COLOR:\w$YELLOW\$(parse_git_branch)$NO_COLOR\$ "
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-nvm use stable
+shopt -s globstar
+
+cd () 
+{
+  builtin cd "$@" && ls -a
+}
+
+overview ()
+{
+  for i in `ls`; do
+    (command cd $i &>/dev/null
+    if ! git status 2>&1 | grep -F -e "nothing to commit" -e "fatal" &>/dev/null; then
+      printf "\n\e[94m$i\e[39m\n"
+      git status
+    fi
+    )
+  done
+}
