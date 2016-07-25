@@ -1,16 +1,4 @@
-# Display the current branch when in a git repository.  IN COLOR!
-function parse_git_branch () {
-   git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
-}
-
-RED="\[\033[0;31m\]"
-YELLOW="\[\033[0;33m\]"
-GREEN="\[\033[0;32m\]"
-NO_COLOR="\[\033[0m\]"
-
-PS1="$GREEN\u@\h$NO_COLOR:\w$YELLOW\$(parse_git_branch)$NO_COLOR\$ "
-
-#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+alias xclip="xargs echo -n | xclip -selection clipboard"
 
 shopt -s globstar
 
@@ -30,3 +18,15 @@ overview ()
     )
   done
 }
+
+export RED="\[\033[0;31m\]"
+export LIGHT_RED="\[\033[0;91m\]"
+export YELLOW="\[\033[0;33m\]"
+export BLUE="\[\033[0;34m\]"
+export GREEN="\[\033[0;32m\]"
+export DARK_GRAY="\[\033[0;90m\]"
+export LIGHT_YELLOW="\[\033[0;93m\]"
+export NO_COLOR="\[\033[0m\]"
+
+export PS1="$RED\u:$LIGHT_YELLOW\w($DARK_GRAY\t@\d)$NO_COLOR\$ "
+export -f cd overview
