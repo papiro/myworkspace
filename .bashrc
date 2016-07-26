@@ -30,3 +30,11 @@ export NO_COLOR="\[\033[0m\]"
 
 export PS1="$RED\u:$LIGHT_YELLOW\w($DARK_GRAY\t@\d)$NO_COLOR\$ "
 export -f cd overview
+
+readonly -a PATHadditions=()
+
+for path in ${PATHadditions[@]}; do
+  if ! { echo $PATH | grep -P "(^|:)$path($|:)" &>/dev/null; }; then
+    export PATH+=:$path
+  fi
+done
