@@ -1,10 +1,11 @@
 alias xclip="xargs echo -n | xclip -selection clipboard"
+alias la="ls -AF --group-directories-first --color"
 
 shopt -s globstar
 
 cd () 
 {
-  builtin cd "$@" && ls -a
+  builtin cd "$@" && la
 }
 
 overview ()
