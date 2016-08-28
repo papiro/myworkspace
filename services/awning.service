@@ -1,0 +1,12 @@
+[Unit]
+Description=awning web-server
+
+[Service]
+Type=oneshot
+RemainAfterExit=true
+WorkingDirectory=/home/papiro
+ExecStart=/bin/bash -c /home/papiro/frvr/bin/frvr /home/papiro/awningJS/bin/awning
+ExecStop=kill `ps -aux | grep -P '(?<![\(|])(/bin/awning|/bin/frvr)' | awk '{ print $2 }'`
+
+[Install]
+WantedBy=multi-user.target
