@@ -1,0 +1,14 @@
+[Unit]
+Description=frontierman: reverse proxy
+
+[Service]
+ExecStart=/usr/local/bin/node /home/pierre/Workspace/frontierman/frontierman
+Restart=always
+RestartSec=10
+StandardOutput=syslog
+StandardError=syslog
+SyslogIdentifier=frontierman
+WorkingDirectory=/home/pierre
+
+[Install]
+WantedBy=multi-user.target
