@@ -1,14 +1,14 @@
 [Unit]
-Description=awning web server
+Description=awning: web server
 
 [Service]
-ExecStart=/usr/local/bin/node /home/papiro/awningJS/bin/awning
+ExecStart=/usr/local/bin/node /home/pierre/Workspace/awning/intro
 Restart=always
 RestartSec=10
 StandardOutput=syslog
 StandardError=syslog
 SyslogIdentifier=awning
-WorkingDirectory=/home/papiro
+WorkingDirectory=/home/pierre
 
 [Install]
 WantedBy=multi-user.target
