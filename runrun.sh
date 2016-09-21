@@ -2,36 +2,36 @@ exists(){
   command -v $1 2>&1 >/dev/null && return 0 || return 1
 }
 
-sudo apt-get update -y
-sudo apt-get upgrade -y
-
-echo "Installing NodeJS..."
-if ! exists node; then
-  sudo apt-get install -y nodejs-legacy
-fi
+sudo apt update -y
+sudo apt upgrade -y
 
 echo "Installing curl..."
 if ! exists curl; then
-  sudo apt-get install -y curl
+  sudo apt install -y curl
 fi
 
-echo "Installing nvm..."
-if ! exists nvm; then
-  curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.29.0/install.sh | bash
-fi
+# echo "Installing nvm..."
+# if ! exists nvm; then
+#   curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.29.0/install.sh | bash
+# fi
 
-echo "Installing npm..."
-if ! exists npm; then
-  sudo apt-get install npm
+# echo "Installing npm..."
+# if ! exists npm; then
+#   sudo apt install npm
+# fi
+
+echo "Installing xclip..."
+if ! exists xclip; then
+  sudo apt install xclip
 fi
 
 echo "Installing vim..."
 if ! exists vim; then
-  sudo apt-get install -y vim
+  sudo apt install -y vim
 fi
 
-echo "Installing latest nodejs stable..."
-nvm install stable &
+# echo "Installing latest nodejs stable..."
+# nvm install stable &
 
 cp ./.vimrc ~/ &
 sudo mkdir -p ~/.vim/after/syntax
