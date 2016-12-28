@@ -4,15 +4,26 @@ installPort () {
   cd $1 && make install clean BATCH=yes  
 }
 
+add2rc () {
+  echo $1 >> /etc/rc.conf
+}
+
+# Setup users
+echo "add users"
+adduser
+
+# Setup timezone
+tzsetup
+
+# Add NTP stuff to rc.conf
+add2rc "ntpd_enable=YES"
+add2rc "ntpd_sync_on_start=YES"
+
 # Standard first update
 echo "freebsd-update fetch"
 freebsd-update fetch
 echo "freebsd-update install"
 freebsd-update install
-
-# Setup user git
-echo "adding user git"
-adduser git
 
 # Hardening, phase 1
 echo "tweak /etc/ssh/sshd_config"
