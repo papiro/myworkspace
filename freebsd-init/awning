@@ -1,0 +1,34 @@
+#!/bin/sh
+
+# REQUIRE: LOGIN
+
+. /etc/rc.subr
+
+name="awning"
+# start_cmd="${name}_start"
+# stop_cmd="${name}_stop"
+rcvar=awning_enable
+
+command="/usr/sbin/awning/intro.js"
+command_interpreter=/usr/local/bin/node
+
+# : ${awning_enable:=yes}
+
+# awning_start()
+# {
+#   echo "awning start"
+#   /usr/sbin/daemon /usr/sbin/awning/intro.js
+  # /usr/local/bin/node /sbin/awning/intro.js
+  # THIS_PID=check_process /sbin/awning/intro.js
+  # echo $THIS_PID
+# }
+
+# awning_stop()
+# {
+#   echo "stopping $THIS_PID"
+#   /bin/kill $THIS_PID
+# }
+
+start_cmd="/usr/sbin/daemon -u pierre /usr/sbin/awning/intro.js"
+load_rc_config $name
+run_rc_command "$1"
