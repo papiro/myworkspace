@@ -54,6 +54,18 @@ echo "add rkhunter stuff to periodic.conf..."
 read foo
 vim /etc/defaults/periodic.conf
 
+# Configuring vim
+cp ./.vimrc ~/ &
+sudo mkdir -p ~/.vim/after/syntax
+sudo cp syntax/*.vim ~/.vim/after/syntax
+sudo cp --parents colors/*.vim ~/.vim
+
+# Configuring git
+git config --global core.editor "vim"
+git config --global user.email "pierre.pirault@outlook.com"
+git config --global user.name "papiro"
+git config --global push.default simple
+
 echo "edit root crontab..."
 read foo
 crontab -e
