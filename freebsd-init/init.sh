@@ -20,6 +20,7 @@ add2rc "syslogd_enable=NO"
 # Hardening, phase 1
 echo "tweak /etc/ssh/sshd_config"
 echo "Add AllowUsers entry..."
+read foo
 vim /etc/ssh/sshd_config
 
 # install Ports

@@ -1,6 +1,6 @@
 #!/bin/sh
-# set -xv
-# exec 1>/tmp/awning.rclog 2>&1
+#set -xv
+#exec 1>/tmp/awning.rclog 2>&1
 
 # REQUIRE: NETWORKING LOGIN DAEMON
 # KEYWORD: shutdown
@@ -9,14 +9,13 @@
 
 name="awning"
 rcvar="awning_enable"
-
-# command_interpreter="/usr/local/bin/node"
-# command="/usr/sbin/awning/intro.js"
 pidfile="/var/run/awningd.pid"
+command="/usr/sbin/daemon"
+command_args="-r -P ${pidfile} -f -u pierre /usr/sbin/awning/intro.js"
 procname="daemon"
 
 # -f flag is to redirect stdin/stdout/stderr to /dev/null to prevent node from crashing
 # on system-startup
-start_cmd="/usr/sbin/daemon -r -P ${pidfile} -f -u pierre /usr/sbin/awning/intro.js"
+# start_cmd="/usr/sbin/daemon -r -P ${pidfile} -f -u pierre /usr/sbin/awning/intro.js"
 load_rc_config $name
 run_rc_command "$1"
