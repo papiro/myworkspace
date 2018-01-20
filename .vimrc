@@ -1,14 +1,13 @@
 set nocompatible
 filetype off
 
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+call plug#begin('~/.vim/plugins')
 
-Plugin 'VundleVim/Vundle.vim'
-Plugin 'editorconfig/editorconfig-vim'
-Plugin 'colorsupport.vim'
+Plug 'https://github.com/Valloric/YouCompleteMe.git'
+Plug 'https://github.com/digitaltoad/vim-pug.git'
+Plug 'https://github.com/kien/ctrlp.vim.git'
 
-call vundle#end()
+call plug#end()
 
 hi Cursor ctermfg=red ctermbg=green
 hi Normal ctermbg=black ctermfg=white
@@ -32,14 +31,22 @@ set expandtab
 set tabstop=2
 set shiftwidth=2
 
-" colorscheme frozen
+"colorscheme frozen
+colorscheme tinydark
 syntax enable
+au BufReadPost *.axe set syntax=css
+au BufReadPost *.bns set syntax=html
 
 let g:netrw_liststyle=3
 
 " (-: KEY MAPPINGS :-)
 nnoremap <S-Enter> O<Esc>
+nnoremap <CTRL-c> <Esc>
 nnoremap <CR> o<Esc>
 nnoremap <space> i<space><esc>
 nnoremap <Left> :bprev<CR>
 nnoremap <Right> :bnext<CR>
+nnoremap <F2> :tabp<CR>
+nnoremap <F3> :tabn<CR>
+nnoremap <S-Right> :vspl<CR>
+nnoremap <S-Down> :sp<CR>
