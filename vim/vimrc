@@ -30,6 +30,11 @@ filetype plugin indent on
 set expandtab
 set tabstop=2
 set shiftwidth=2
+set laststatus=1
+set statusline=%f "tail of the filename
+let g:ctrlp_custom_ignore = {
+  \ 'dir': '\v([\/]\.git$)|([\/]node_modules)'
+\ }
 
 "colorscheme frozen
 colorscheme tinydark
