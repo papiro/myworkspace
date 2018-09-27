@@ -1,0 +1,13 @@
+alias la="ls -a"
+alias copy="pbcopy"
+alias work="cd ~/Desktop/cosmo"
+alias bt="cd ~/BT/CostGovernance/Web/Ic.CostGovernance.Web/app/"
+alias bp="node ~/Desktop/bp2s/bp.js"
+
+function cd () {
+  builtin cd $1 && ls; 
+}
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
