@@ -1,0 +1,11 @@
+[push]
+	default = simple
+[user]
+  email = pierre.pirault@outlook.com
+  name = Pierre Pirault
+[core]
+  autocrlf = input
+[merge]
+  tool = vimdiff
+[color]
+	ui = auto
