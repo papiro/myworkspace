@@ -1,9 +1,0 @@
-# Project name
-  name=myworkspace.git
-
-# Project repositories
-  primary=git@godswhim.us:myworkspace.git
-  secondary=git@gitlab.com:papiro/myworkspace.git
-  tertiary=/var/backups/myworkspace.git
-
-# Project submodules

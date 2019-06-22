@@ -1,5 +1,8 @@
+" This line should not be removed as it ensures that various options are
+" properly set to work with the Vim-related packages available in Debian.
+runtime! debian.vim
+
 syntax enable
-set syntax=myjavascript
 filetype plugin on
 
 set nocompatible	" Use Vim defaults (much better!)
@@ -24,13 +27,8 @@ nnoremap <Right> :bn<CR>
 nnoremap <Space> i <ESC> 
 nnoremap <S-Right> :vspl<CR>
 nnoremap <S-Down> :sp<CR>
-
-set runtimepath^=~/.vim/bundle/ctrlp.vim
-
-let g:ctrlp_custom_ignore = {
-  \ 'dir':  'node_modules'
-  \ }
-let g:ctrlp_working_path_mode = 'a'
+nnoremap <C-p> :e **/
+nnoremap <C-c> :bp<bar>sp<bar>bn<bar>bd<CR>
 
 " Don't wake up system with blinking cursor:
 " http://www.linuxpowertop.org/known.php
