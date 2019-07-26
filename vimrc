@@ -15,21 +15,36 @@ set tabstop=2
 set shiftwidth=2
 set autoindent
 set smartindent
+set incsearch
+set cursorline "highlight current line
+set showmatch "highlight matching [{(
+set wildignore+=*/node_modules/*
 set laststatus=2
 set statusline=%(%3.l/%-3.L%) " currentLine/totalLines
 set statusline+=%=            " split left and right justified
 set statusline+=%f            " relative file path
+augroup vimrc-incsearch-highlight
+  autocmd!
+  autocmd CmdlineEnter /,\? :set hlsearch
+  autocmd CmdlineLeave /,\? :set nohlsearch
+augroup END
 
-nnoremap <CR> o<Esc>
-nnoremap <S-Enter> O<Esc>
+nnoremap <C-c> :bp\|bd #<CR>
 nnoremap <Left> :bp<CR>
 nnoremap <Right> :bn<CR>
-nnoremap <Space> i <ESC> 
-nnoremap <S-Right> :vspl<CR>
-nnoremap <S-Down> :sp<CR>
 nnoremap <C-p> :e **/
-nnoremap <C-c> :bp<bar>sp<bar>bn<bar>bd<CR>
+nnoremap + <C-w>><CR>
+nnoremap - <C-w><<CR>
+nnoremap <Up> <C-w>+<CR>
+nnoremap <Down> <C-w>-<CR>
+nnoremap gb gT
+nnoremap <leader>p :ls<CR>:b 
+nnoremap <S-Right> :vs<CR>
+nnoremap <S-Down> :sp<CR>
 
 " Don't wake up system with blinking cursor:
 " http://www.linuxpowertop.org/known.php
 let &guicursor = &guicursor . ",a:blinkon0"
+
+set dir=$HOME/.vim/tmp/swap
+if !isdirectory(&dir) | call mkdir(&dir, 'p', 0700) | endif
