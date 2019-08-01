@@ -18,7 +18,6 @@ set smartindent
 set incsearch
 set cursorline "highlight current line
 set showmatch "highlight matching [{(
-set wildignore+=*/node_modules/*
 set laststatus=2
 set statusline=%(%3.l/%-3.L%) " currentLine/totalLines
 set statusline+=%=            " split left and right justified
@@ -41,10 +40,12 @@ nnoremap gb gT
 nnoremap <leader>p :ls<CR>:b 
 nnoremap <S-Right> :vs<CR>
 nnoremap <S-Down> :sp<CR>
+nnoremap zf :fold<CR>
 
 " Don't wake up system with blinking cursor:
 " http://www.linuxpowertop.org/known.php
 let &guicursor = &guicursor . ",a:blinkon0"
+let $BASH_ENV = "~/.bash_aliases"
 
 set dir=$HOME/.vim/tmp/swap
 if !isdirectory(&dir) | call mkdir(&dir, 'p', 0700) | endif
