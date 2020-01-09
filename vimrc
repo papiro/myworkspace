@@ -22,6 +22,7 @@ set laststatus=2
 set statusline=%(%3.l/%-3.L%) " currentLine/totalLines
 set statusline+=%=            " split left and right justified
 set statusline+=%f            " relative file path
+set lazyredraw " rerender screen only at end of macro - not on intermediary steps
 augroup vimrc-incsearch-highlight
   autocmd!
   autocmd CmdlineEnter /,\? :set hlsearch
@@ -49,3 +50,7 @@ let $BASH_ENV = "~/.bash_aliases"
 
 set dir=$HOME/.vim/tmp/swap
 if !isdirectory(&dir) | call mkdir(&dir, 'p', 0700) | endif
+
+if &diff
+  colorscheme evening
+endif
