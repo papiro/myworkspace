@@ -23,6 +23,7 @@ set statusline=%(%3.l/%-3.L%) " currentLine/totalLines
 set statusline+=%=            " split left and right justified
 set statusline+=%f            " relative file path
 set lazyredraw " rerender screen only at end of macro - not on intermediary steps
+set colorcolumn=120
 augroup vimrc-incsearch-highlight
   autocmd!
   autocmd CmdlineEnter /,\? :set hlsearch
@@ -35,8 +36,8 @@ nnoremap <Right> :bn<CR>
 nnoremap <C-p> :e **/
 nnoremap + <C-w>><CR>
 nnoremap - <C-w><<CR>
-nnoremap <Up> <C-w>+<CR>
-nnoremap <Down> <C-w>-<CR>
+map <Up> <C-w>+<CR>
+map <Down> <C-w>-<CR>
 nnoremap gb gT
 nnoremap <leader>p :ls<CR>:b 
 nnoremap <S-Right> :vs<CR>
@@ -52,5 +53,5 @@ set dir=$HOME/.vim/tmp/swap
 if !isdirectory(&dir) | call mkdir(&dir, 'p', 0700) | endif
 
 if &diff
-  colorscheme evening
+  colorscheme pablo
 endif
