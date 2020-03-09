@@ -1,11 +1,3 @@
-# if running bash
-if [ -n "$BASH_VERSION" ]; then
-    # include .bashrc if it exists
-    if [ -f "$HOME/.bashrc" ]; then
-	. "$HOME/.bashrc"
-    fi
-fi
-
 # set PATH so it includes user's private bin if it exists
 if [ -d "$HOME/bin" ] ; then
     PATH="$HOME/bin:$PATH"
@@ -29,10 +21,8 @@ export LIGHT_YELLOW="\[\033[0;93m\]"
 export NO_COLOR="\[\033[0m\]"
 
 # export VIMRC=~/.vimrc
-export PROMPT_COMMAND=trunc_path
-
 function trunc_path () {
-  export PS1="$RED\u:$LIGHT_YELLOW$(pwd | awk '
+  export PS1="$LIGHT_YELLOW$(pwd | awk '
     BEGIN { MAX=30 }
     { 
       LEN=length($0); 
@@ -45,8 +35,5 @@ function trunc_path () {
   ')$NO_COLOR: "
 }
 
-# export PS1="$RED\u:$LIGHT_YELLOW\w($DARK_GRAY\t@\d)$NO_COLOR\$ "
-
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+export PS1="$RED\u:$LIGHT_YELLOW\w($DARK_GRAY\t@\d)$NO_COLOR\$ "
+export PROMPT_COMMAND=trunc_path
