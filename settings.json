@@ -1,0 +1,38 @@
+{
+    "remote.WSL.fileWatcher.polling": true,
+    "workbench.colorTheme": "Winter is Coming (Dark Blue - No Italics)",
+    "workbench.iconTheme": "vscode-icons",
+    "terminal.integrated.shell.windows": "C:\\WINDOWS\\System32\\wsl.exe",
+    "breadcrumbs.enabled": true,
+    "debug.toolBarLocation": "floating",
+    "editor.autoIndent": true,
+    "editor.codeLens": false,
+    "editor.cursorBlinking": "smooth",
+    "editor.cursorStyle": "line",
+    "editor.fontSize": 16,
+    "editor.fontFamily": "Fira Code",
+
+    "editor.acceptSuggestionOnCommitCharacter": false,
+
+    "editor.fontLigatures": true,
+    "editor.formatOnPaste": true,
+    "editor.formatOnType": false,
+    "editor.lineHeight": 25,
+    "files.autoSave": "off",
+    "files.autoSaveDelay": 2000,
+    "search.showLineNumbers": true,
+    "workbench.iconTheme": "material-icon-theme",
+    "workbench.colorCustomizations": {},
+    "zenMode.centerLayout": false,
+    "window.zoomLevel": 0,
+    "editor.tabSize": 2,
+    "editor.minimap.enabled": false,
+    "search.exclude": {
+        "**/builds": true
+    },
+    "editor.largeFileOptimizations": false,
+    "explorer.confirmDelete": false,
+    "typescript.suggest.enabled": false,
+    "terminal.integrated.shell.linux": "/bin/bash",
+    "vsicons.dontShowNewVersionMessage": true,
+}

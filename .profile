@@ -1,11 +1,3 @@
-# if running bash
-if [ -n "$BASH_VERSION" ]; then
-    # include .bashrc if it exists
-    if [ -f "$HOME/.bashrc" ]; then
-	. "$HOME/.bashrc"
-    fi
-fi
-
 # set PATH so it includes user's private bin if it exists
 if [ -d "$HOME/bin" ] ; then
     PATH="$HOME/bin:$PATH"
@@ -34,7 +26,7 @@ export NO_COLOR="\[\033[0m\]"
 # export VIMRC=~/.vimrc
 export PROMPT_COMMAND=trunc_path
 
- function trunc_path () {
+function trunc_path () {
    export PS1="$RED\u:$LIGHT_YELLOW$(pwd | awk '
      BEGIN { MAX=30 }
      { 
