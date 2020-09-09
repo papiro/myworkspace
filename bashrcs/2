@@ -1,6 +1,4 @@
 # alias copy="pbcopy" # MacOSX
 alias la="ls -AFG" # Linux (GNU ls)
-
-function cd () {
-  builtin cd $1 && la; 
-}
+alias python="python3"
+alias pip="python -m pip"

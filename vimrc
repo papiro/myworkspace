@@ -40,6 +40,8 @@ augroup vimrc-incsearch-highlight
   autocmd CmdlineLeave /,\? :set nohlsearch
 augroup END
 
+autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
+
 nnoremap <C-c> :bp\|bd #<CR>
 nnoremap <Left> :bp<CR>
 nnoremap <Right> :bn<CR>

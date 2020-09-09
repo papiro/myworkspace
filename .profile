@@ -1,18 +1,19 @@
 # set PATH so it includes user's private bin if it exists
 if [ -d "$HOME/bin" ] ; then
-    PATH="$HOME/bin:$PATH"
+    export PATH="$HOME/bin:$PATH"
 fi
 
 # set PATH so it includes user's private bin if it exists
 if [ -d "$HOME/.local/bin" ] ; then
-    PATH="$HOME/.local/bin:$PATH"
+    export PATH="$HOME/.local/bin:$PATH"
+fi
+
+if [ -f "$HOME/.bashrc" ] ; then
+  source $HOME/.bashrc
 fi
 
 #export JAVA_HOME="/Library/Java/JavaVirtualMachines/openjdk-14.0.1.jdk/Contents/Home"
 export JAVA_HOME="/Library/Java/JavaVirtualMachines/adoptopenjdk-8.jdk/Contents/Home"
-
-export PATH="$JAVA_HOME/bin:$PATH"
-export PATH="$HOME/.yarn/bin:$PATH"
 
 export RED="\[\033[0;31m\]"
 export LIGHT_RED="\[\033[0;91m\]"
@@ -26,6 +27,7 @@ export NO_COLOR="\[\033[0m\]"
 # export VIMRC=~/.vimrc
 export PROMPT_COMMAND=trunc_path
 
+# export PS1="$RED\u:$LIGHT_YELLOW\w($DARK_GRAY\t@\d)$NO_COLOR\$ "
 function trunc_path () {
    export PS1="$RED\u:$LIGHT_YELLOW$(pwd | awk '
      BEGIN { MAX=30 }
@@ -43,14 +45,20 @@ function trunc_path () {
 
 export -f trunc_path
 
-# export PS1="$RED\u:$LIGHT_YELLOW\w($DARK_GRAY\t@\d)$NO_COLOR\$ "
-export PATH=$PATH:"/Users/pierrepirault/flutter/bin"
-export PATH="/Users/pierrepirault/.deno/bin:$PATH"
-# The next line updates PATH for the Google Cloud SDK.
-#if [ -f '/Users/pierrepirault/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/pierrepirault/google-cloud-sdk/path.zsh.inc'; fi
+function cd () {
+  builtin cd $1 && la; 
+}
 
-# The next line enables shell command completion for gcloud.
-#if [ -f '/Users/pierrepirault/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/pierrepirault/google-cloud-sdk/completion.zsh.inc'; fi
+export -f cd
 
-alias python="python3"
-alias pip="python -m pip"
+PATHS=(
+  "$HOME/flutter/bin"
+  "$HOME/.deno/bin"
+  "$HOME/.yarn/bin"
+  "$JAVA_HOME/bin"
+  "$HOME/Library/Python/3.7/bin"
+)
+
+for i in ${PATHS[@]}; do
+  export PATH=$PATH:$i
+done
