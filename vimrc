@@ -8,7 +8,8 @@ call plug#begin()
 
 Plug 'leafgarland/typescript-vim'
 Plug 'peitalin/vim-jsx-typescript'
-Plug 'dart-lang/dart-vim-plugin'
+" Plug 'dart-lang/dart-vim-plugin'
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 
 call plug#end()
 
@@ -33,7 +34,7 @@ set statusline=%(%3.l/%-3.L%) " currentLine/totalLines
 set statusline+=%=            " split left and right justified
 set statusline+=%f            " relative file path
 set lazyredraw " rerender screen only at end of macro - not on intermediary steps
-set colorcolumn=120
+set colorcolumn=100
 augroup vimrc-incsearch-highlight
   autocmd!
   autocmd CmdlineEnter /,\? :set hlsearch
@@ -67,3 +68,4 @@ if !isdirectory(&dir) | call mkdir(&dir, 'p', 0700) | endif
 if &diff
   colorscheme pablo
 endif
+

@@ -1,13 +1,3 @@
-# set PATH so it includes user's private bin if it exists
-if [ -d "$HOME/bin" ] ; then
-    export PATH="$HOME/bin:$PATH"
-fi
-
-# set PATH so it includes user's private bin if it exists
-if [ -d "$HOME/.local/bin" ] ; then
-    export PATH="$HOME/.local/bin:$PATH"
-fi
-
 if [ -f "$HOME/.bashrc" ] ; then
   source $HOME/.bashrc
 fi
@@ -46,7 +36,7 @@ function trunc_path () {
 export -f trunc_path
 
 function cd () {
-  builtin cd $1 && la; 
+  builtin cd "$1" && la; 
 }
 
 export -f cd
@@ -57,8 +47,34 @@ PATHS=(
   "$HOME/.yarn/bin"
   "$JAVA_HOME/bin"
   "$HOME/Library/Python/3.7/bin"
+  "$HOME/.pyenv/bin"
+  "/usr/local/opt/ruby/bin"
+  "$HOME/.local/bin"
+  "$HOME/bin"
+  /Library/TeX/texbin
+  "$HOME/google-cloud-sdk/bin"
+  "$HOME/go/bin"
 )
 
 for i in ${PATHS[@]}; do
-  export PATH=$PATH:$i
+  if [[ $PATH != *"$i"* ]]; then
+    if [[ -d $i ]] ; then
+      export PATH=$i:$PATH
+    fi
+  fi
 done
+
+function bekp () {
+  bundle exec kitchen diagnose $1 | grep password -m1
+}
+
+export -f bekp
+
+export PYENV_ROOT="$HOME/.pyenv"
+
+export RIPGREP_CONFIG_PATH="$HOME/.ripgreprc"
+
+export GOPATH=$HOME/go
+export GOBIN=$HOME/go/bin
+
+#eval "$(rbenv init -)"

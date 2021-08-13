@@ -1,4 +1,13 @@
-# alias copy="pbcopy" # MacOSX
+alias copy="pbcopy" # MacOSX
 alias la="ls -AFG" # Linux (GNU ls)
 alias python="python3"
-alias pip="python -m pip"
+alias pip="python3 -m pip"
+alias virtualenv="python3 -m virtualenv"
+alias purge_docker="docker ps -aq | xargs docker rm && docker images -q | xargs docker rmi"
+# alias be="bundle exec"
+# alias bek="bundle exec kitchen"
+
+#eval "$(pyenv init -)"
+#eval "$(pyenv virtualenv-init -)"
+source ~/VirtualEnvs/map/bin/activate
+
