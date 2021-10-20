@@ -2,8 +2,8 @@ if [ -f "$HOME/.bashrc" ] ; then
   source $HOME/.bashrc
 fi
 
-#export JAVA_HOME="/Library/Java/JavaVirtualMachines/openjdk-14.0.1.jdk/Contents/Home"
-export JAVA_HOME="/Library/Java/JavaVirtualMachines/adoptopenjdk-8.jdk/Contents/Home"
+# export JAVA_HOME="/Library/Java/JavaVirtualMachines/openjdk-14.0.1.jdk/Contents/Home"
+# export JAVA_HOME="/Library/Java/JavaVirtualMachines/adoptopenjdk-8.jdk/Contents/Home"
 
 export RED="\[\033[0;31m\]"
 export LIGHT_RED="\[\033[0;91m\]"
@@ -36,23 +36,34 @@ function trunc_path () {
 export -f trunc_path
 
 function cd () {
-  builtin cd "$1" && la; 
+  builtin cd "$1" && ls -aAFG; 
 }
 
 export -f cd
 
+function openfile () {
+  FILES=`rg "$*" -l`;
+  if [[ $FILES ]]; then
+    vim $FILES;
+  else
+    echo "No files found";
+  fi;
+}
+
+export -f openfile
+
 PATHS=(
-  "$HOME/flutter/bin"
-  "$HOME/.deno/bin"
+  # "$HOME/flutter/bin"
+  # "$HOME/.deno/bin"
   "$HOME/.yarn/bin"
-  "$JAVA_HOME/bin"
-  "$HOME/Library/Python/3.7/bin"
+  # "$JAVA_HOME/bin"
+  "$HOME/Library/Python/3.8/bin"
   "$HOME/.pyenv/bin"
   "/usr/local/opt/ruby/bin"
   "$HOME/.local/bin"
   "$HOME/bin"
   /Library/TeX/texbin
-  "$HOME/google-cloud-sdk/bin"
+  # "$HOME/google-cloud-sdk/bin"
   "$HOME/go/bin"
 )
 
@@ -78,3 +89,5 @@ export GOPATH=$HOME/go
 export GOBIN=$HOME/go/bin
 
 #eval "$(rbenv init -)"
+
+eval "$(/opt/homebrew/bin/brew shellenv)"

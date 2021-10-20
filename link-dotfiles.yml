@@ -1,0 +1,40 @@
+---
+- name: Link dotfiles
+  hosts: localhost
+  gather_facts: no
+  collections: 
+    - ansible.builtin
+  tasks:
+    - name: Link Bash config files
+      block:
+        - name: Link .bashrc
+          file:
+            path: ~/.bashrc
+            state: link
+            force: yes
+            src: "{{playbook_dir}}/dotfiles/.bashrc"
+
+        - name: Link .profile
+          file:
+            path: ~/.profile
+            state: link
+            force: yes
+            src: "{{playbook_dir}}/dotfiles/.profile"
+
+        - name: Info
+          debug:
+            msg: "MAKE SURE TO SOURCE ~/.profile"
+
+    - name: Link vimrc
+      file:
+        path: ~/.vim/vimrc
+        state: link
+        force: yes
+        src: "{{playbook_dir}}/dotfiles/vimrc"
+
+    - name: Link .ripgreprc
+      file:
+        path: ~/.ripgreprc
+        state: link
+        force: yes
+        src: "{{playbook_dir}}/dotfiles/.ripgreprc"

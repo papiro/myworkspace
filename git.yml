@@ -1,0 +1,33 @@
+---
+- name: Perform Git actions
+  hosts: localhost
+  gather_facts: no
+  tasks:
+    - name: Configure Git
+      collections: 
+        - community.general
+      block:
+        - name: Set email
+          git_config:
+            name: user.email
+            value: pierre.pirault@outlook.com
+            scope: global
+
+        - name: Set name
+          git_config:
+            name: user.name
+            value: Pierre Pirault
+            scope: global
+
+        - name: Set editor
+          git_config:
+            name: core.editor
+            value: vim
+            scope: global
+
+        - name: Set diff tool
+          git_config:
+            name: diff.tool
+            value: vimdiff
+            scope: global
+
