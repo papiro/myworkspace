@@ -18,5 +18,4 @@ alias purge_docker="docker ps -aq | xargs docker rm && docker images -q | xargs 
 
 #eval "$(pyenv init -)"
 #eval "$(pyenv virtualenv-init -)"
-source ~/VirtualEnvs/map/bin/activate
-
+#source ~/VirtualEnvs/map/bin/activate

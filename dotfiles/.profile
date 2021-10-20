@@ -91,3 +91,6 @@ export GOBIN=$HOME/go/bin
 #eval "$(rbenv init -)"
 
 eval "$(/opt/homebrew/bin/brew shellenv)"
+
+# mac
+export BASH_SILENCE_DEPRECATION_WARNING=1
