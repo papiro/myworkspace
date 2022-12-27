@@ -42,7 +42,7 @@ function cd () {
 export -f cd
 
 function openfile () {
-  FILES=`rg "$*" -l`;
+  FILES=`rg "$*" -l --color=never`;
   if [[ $FILES ]]; then
     vim $FILES;
   else

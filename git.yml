@@ -31,3 +31,15 @@
             value: vimdiff
             scope: global
 
+        - name: Set merge tool
+          git_config:
+            name: merge.tool
+            value: vimdiff
+            scope: global
+
+        - name: Set pull strategy
+          git_config:
+            name: pull.rebase
+            value: false
+            scope: global
+
