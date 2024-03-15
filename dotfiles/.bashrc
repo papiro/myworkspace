@@ -16,6 +16,9 @@ alias purge_docker="docker ps -aq | xargs docker rm && docker images -q | xargs 
 # alias be="bundle exec"
 # alias bek="bundle exec kitchen"
 
-#eval "$(pyenv init -)"
-#eval "$(pyenv virtualenv-init -)"
 #source ~/VirtualEnvs/map/bin/activate
+
+# eval "$(pyenv virtualenv-init -)"
+export PYENV_ROOT="$HOME/.pyenv"
+# command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+# eval "$(pyenv init -)"

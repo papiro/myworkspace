@@ -4,6 +4,8 @@ fi
 
 # export JAVA_HOME="/Library/Java/JavaVirtualMachines/openjdk-14.0.1.jdk/Contents/Home"
 # export JAVA_HOME="/Library/Java/JavaVirtualMachines/adoptopenjdk-8.jdk/Contents/Home"
+#
+export SHELL=/bin/bash
 
 export RED="\[\033[0;31m\]"
 export LIGHT_RED="\[\033[0;91m\]"
@@ -35,11 +37,11 @@ function trunc_path () {
 
 export -f trunc_path
 
-function cd () {
-  builtin cd "$1" && ls -aAFG; 
-}
-
-export -f cd
+# function cd () {
+#   builtin cd "$1" && ls -aAFG; 
+# }
+# 
+# export -f cd
 
 function openfile () {
   FILES=`rg "$*" -l --color=never`;
@@ -57,9 +59,9 @@ PATHS=(
   # "$HOME/.deno/bin"
   "$HOME/.yarn/bin"
   # "$JAVA_HOME/bin"
-  "$HOME/Library/Python/3.8/bin"
+  # "$HOME/Library/Python/3.8/bin"
   "$HOME/.pyenv/bin"
-  "/usr/local/opt/ruby/bin"
+  # "/usr/local/opt/ruby/bin"
   "$HOME/.local/bin"
   "$HOME/bin"
   /Library/TeX/texbin
@@ -75,12 +77,6 @@ for i in ${PATHS[@]}; do
   fi
 done
 
-function bekp () {
-  bundle exec kitchen diagnose $1 | grep password -m1
-}
-
-export -f bekp
-
 export PYENV_ROOT="$HOME/.pyenv"
 
 export RIPGREP_CONFIG_PATH="$HOME/.ripgreprc"
@@ -94,3 +90,11 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 
 # mac
 export BASH_SILENCE_DEPRECATION_WARNING=1
+
+export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@3)"
+
+eval "$(rbenv init - bash)"
+
+# export LDFLAGS="-L/opt/homebrew/opt/ruby/lib"
+# export CPPFLAGS="-I/opt/homebrew/opt/ruby/include"
+export PATH="/opt/homebrew/opt/ruby/bin:$PATH"
