@@ -2,29 +2,25 @@ if [ -f "$HOME/.bashrc" ] ; then
   source $HOME/.bashrc
 fi
 
-# export JAVA_HOME="/Library/Java/JavaVirtualMachines/openjdk-14.0.1.jdk/Contents/Home"
-# export JAVA_HOME="/Library/Java/JavaVirtualMachines/adoptopenjdk-8.jdk/Contents/Home"
-#
 export SHELL=/bin/bash
 
-export RED="\[\033[0;31m\]"
-export LIGHT_RED="\[\033[0;91m\]"
-export YELLOW="\[\033[0;33m\]"
-export BLUE="\[\033[0;34m\]"
-export GREEN="\[\033[0;32m\]"
-export DARK_GRAY="\[\033[0;90m\]"
-export LIGHT_YELLOW="\[\033[0;93m\]"
-export NO_COLOR="\[\033[0m\]"
+RED="\[\033[0;31m\]"
+LIGHT_RED="\[\033[0;91m\]"
+YELLOW="\[\033[0;33m\]"
+BLUE="\[\033[0;34m\]"
+GREEN="\[\033[0;32m\]"
+DARK_GRAY="\[\033[0;90m\]"
+LIGHT_YELLOW="\[\033[0;93m\]"
+NO_COLOR="\[\033[0m\]"
 
-# export VIMRC=~/.vimrc
-export PROMPT_COMMAND=trunc_path
-
-# export PS1="$RED\u:$LIGHT_YELLOW\w($DARK_GRAY\t@\d)$NO_COLOR\$ "
 function trunc_path () {
    export PS1="$RED\u:$LIGHT_YELLOW$(pwd | awk '
      BEGIN { MAX=30 }
      { 
-       sub(/\/Users\/[^\/]*/, "~", $0);
+       # macos
+       # sub(/\/Users\/[^\/]*/, "~", $0);
+       # linux
+       sub(/\/home\/'"$USER"'/, "~", $0);
        LEN=length($0); 
        if(LEN>MAX){
          printf "...";
@@ -37,11 +33,7 @@ function trunc_path () {
 
 export -f trunc_path
 
-# function cd () {
-#   builtin cd "$1" && ls -aAFG; 
-# }
-# 
-# export -f cd
+export PROMPT_COMMAND=trunc_path
 
 function openfile () {
   FILES=`rg "$*" -l --color=never`;
@@ -55,18 +47,18 @@ function openfile () {
 export -f openfile
 
 PATHS=(
-  # "$HOME/flutter/bin"
-  # "$HOME/.deno/bin"
-  "$HOME/.yarn/bin"
-  # "$JAVA_HOME/bin"
-  # "$HOME/Library/Python/3.8/bin"
-  "$HOME/.pyenv/bin"
-  # "/usr/local/opt/ruby/bin"
   "$HOME/.local/bin"
   "$HOME/bin"
-  /Library/TeX/texbin
+  # "$HOME/flutter/bin"
+  # "$HOME/.deno/bin"
+  # "$HOME/.yarn/bin"
+  # "$HOME/.pyenv/bin"
+  # "$HOME/go/bin"
+  # "$JAVA_HOME/bin"
+  # "$HOME/Library/Python/3.8/bin"
+  # "/usr/local/opt/ruby/bin"
+  # /Library/TeX/texbin
   # "$HOME/google-cloud-sdk/bin"
-  "$HOME/go/bin"
 )
 
 for i in ${PATHS[@]}; do
@@ -77,24 +69,27 @@ for i in ${PATHS[@]}; do
   fi
 done
 
-export PYENV_ROOT="$HOME/.pyenv"
-
 export RIPGREP_CONFIG_PATH="$HOME/.ripgreprc"
 
-export GOPATH=$HOME/go
-export GOBIN=$HOME/go/bin
+# python
+# export PYENV_ROOT="$HOME/.pyenv"
 
+# macos
+# eval "$(/opt/homebrew/bin/brew shellenv)"
+# export BASH_SILENCE_DEPRECATION_WARNING=1
+
+# go
+# export GOPATH=$HOME/go
+# export GOBIN=$HOME/go/bin
+
+# ruby
 #eval "$(rbenv init -)"
-
-eval "$(/opt/homebrew/bin/brew shellenv)"
-
-# mac
-export BASH_SILENCE_DEPRECATION_WARNING=1
-
-export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@3)"
-
-eval "$(rbenv init - bash)"
-
+# export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@3)"
+# eval "$(rbenv init - bash)"
+# export PATH="/opt/homebrew/opt/ruby/bin:$PATH"
 # export LDFLAGS="-L/opt/homebrew/opt/ruby/lib"
 # export CPPFLAGS="-I/opt/homebrew/opt/ruby/include"
-export PATH="/opt/homebrew/opt/ruby/bin:$PATH"
+
+# java
+# export JAVA_HOME="/Library/Java/JavaVirtualMachines/openjdk-14.0.1.jdk/Contents/Home"
+# export JAVA_HOME="/Library/Java/JavaVirtualMachines/adoptopenjdk-8.jdk/Contents/Home"
