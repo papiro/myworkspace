@@ -17,6 +17,7 @@ alias purge_docker="docker ps -aq | xargs docker rm && docker images -q | xargs 
 # alias copy="pbcopy" # MacOSX
 # alias be="bundle exec"
 # alias bek="bundle exec kitchen"
+alias vim=nvim
 
 # python
 # source ~/VirtualEnvs/map/bin/activate

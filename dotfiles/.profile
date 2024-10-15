@@ -2,6 +2,10 @@ if [ -f "$HOME/.bashrc" ] ; then
   source $HOME/.bashrc
 fi
 
+if [ -f "$HOME/.sensitive" ] ; then
+  source $HOME/.sensitive
+fi
+
 export SHELL=/bin/bash
 
 RED="\[\033[0;31m\]"
@@ -89,6 +93,10 @@ export RIPGREP_CONFIG_PATH="$HOME/.ripgreprc"
 # export PATH="/opt/homebrew/opt/ruby/bin:$PATH"
 # export LDFLAGS="-L/opt/homebrew/opt/ruby/lib"
 # export CPPFLAGS="-I/opt/homebrew/opt/ruby/include"
+export PATH="/opt/homebrew/opt/ruby/bin:$PATH"
+. "$HOME/.cargo/env"
+
+[[ -r "/opt/homebrew/etc/profile.d/bash_completion.sh" ]] && . "/opt/homebrew/etc/profile.d/bash_completion.sh"
 
 # java
 # export JAVA_HOME="/Library/Java/JavaVirtualMachines/openjdk-14.0.1.jdk/Contents/Home"
